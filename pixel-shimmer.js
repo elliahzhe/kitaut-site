@@ -4,7 +4,11 @@
 
   if (!canvas || !context) return;
 
-  const gridSize = 3;
+  const gridSize = Number.parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue("--pixel-grid")
+  ) || 3;
+  const gridLineSize = 1;
+  const pixelSize = gridSize - gridLineSize;
   const colors = ["245, 243, 232", "0, 201, 213", "244, 211, 94"];
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -16,7 +20,7 @@
   let previousTime = 0;
 
   function createPixels() {
-    const count = Math.max(72, Math.min(220, Math.round((width * height) / 5200)));
+    const count = Math.max(110, Math.min(360, Math.round((width * height) / 3400)));
 
     pixels = Array.from({ length: count }, () => ({
       x: Math.floor((Math.random() * width) / gridSize) * gridSize,
@@ -49,12 +53,15 @@
 
       if (step < 0.34) continue;
 
-      const size = step > 0.9 ? 2 : 1;
-      const offset = (gridSize - size) * 0.5;
-      const alpha = 0.025 + step * 0.065;
+      const alpha = 0.04 + step * 0.1;
 
       context.fillStyle = `rgba(${pixel.color}, ${alpha})`;
-      context.fillRect(pixel.x + offset, pixel.y + offset, size, size);
+      context.fillRect(
+        pixel.x + gridLineSize,
+        pixel.y + gridLineSize,
+        pixelSize,
+        pixelSize
+      );
     }
   }
 

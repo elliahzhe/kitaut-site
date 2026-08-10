@@ -25,6 +25,7 @@
   --yellow: #f4d35e;
   --cyan: #00c9d5;
   --red: #ff3b2f;
+  --pixel-grid: 3px;
   --pixel: "Silkscreen", "Courier New", monospace;
   --ui: var(--pixel);
   --meta: "SFMono-Regular", "Roboto Mono", "Courier New", monospace;
@@ -70,7 +71,7 @@ body {
   transform: translate(-50%, -50%) scale(0.34);
   transform-origin: center;
   will-change: transform, opacity;
-  animation: generated-wave-pulse var(--sync-cycle) linear forwards;
+  animation: generated-wave-pulse var(--wave-life, 1500ms) steps(12, end) forwards;
 }
 
 .top-background-fade {
@@ -97,7 +98,7 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.26;
+  opacity: 0.58;
   mix-blend-mode: screen;
   image-rendering: pixelated;
 }
@@ -114,9 +115,98 @@ body::before {
       transparent 0.7px),
     linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 0, 0, 0.28) 1px, transparent 1px);
-  background-size: 3px 3px;
+  background-size: var(--pixel-grid) var(--pixel-grid);
   mix-blend-mode: soft-light;
   opacity: 0.72;
+}
+
+.crt-overlay {
+  display: none;
+}
+
+.crt-enabled .crt-overlay {
+  position: fixed;
+  z-index: 40;
+  display: block;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(245, 243, 232, 0.018) 0,
+      rgba(245, 243, 232, 0.018) 1px,
+      rgba(0, 0, 0, 0.1) 1px,
+      rgba(0, 0, 0, 0.1) 3px
+    ),
+    repeating-linear-gradient(
+      to right,
+      rgba(255, 59, 47, 0.018) 0,
+      rgba(255, 59, 47, 0.018) 1px,
+      rgba(0, 201, 213, 0.012) 1px,
+      rgba(0, 201, 213, 0.012) 2px,
+      rgba(90, 110, 255, 0.018) 2px,
+      rgba(90, 110, 255, 0.018) 3px
+    ),
+    radial-gradient(
+      ellipse at 50% 47%,
+      transparent 45%,
+      rgba(0, 0, 0, 0.08) 68%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+  background-size: 100% 3px, 3px 100%, 100% 100%;
+  box-shadow: inset 0 0 clamp(42px, 9vw, 130px) rgba(0, 0, 0, 0.4);
+  opacity: 0.76;
+  mix-blend-mode: normal;
+  animation: crt-flicker 92ms steps(2, end) infinite;
+}
+
+.crt-enabled .crt-overlay::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent 0 6%,
+    rgba(255, 59, 47, 0.2) 18%,
+    rgba(245, 243, 232, 0.22) 48%,
+    rgba(0, 201, 213, 0.2) 78%,
+    transparent 94% 100%
+  );
+  opacity: 0.36;
+  transform: translateY(4px);
+  animation: crt-tracking 6.4s steps(1, end) infinite;
+}
+
+.crt-enabled .creator-copy strong,
+.crt-enabled .coming-soon,
+.crt-enabled .site-footer a,
+.crt-enabled .store-badge {
+  text-shadow:
+    1px 0 rgba(255, 59, 47, 0.42),
+    -1.25px 0 rgba(0, 201, 213, 0.38);
+}
+
+.crt-enabled body {
+  animation: crt-screen-blink 115ms steps(2, end) infinite;
+}
+
+.crt-enabled .site-header,
+.crt-enabled .hero,
+.crt-enabled .site-footer {
+  will-change: transform;
+  animation: crt-content-jitter 172ms steps(2, end) infinite alternate;
+}
+
+.crt-enabled .creator,
+.crt-enabled .icon-orbit,
+.crt-enabled .logo-stage {
+  filter:
+    drop-shadow(1px 0 rgba(255, 59, 47, 0.2))
+    drop-shadow(-1px 0 rgba(0, 201, 213, 0.2));
 }
 
 a { color: inherit; }
@@ -143,6 +233,7 @@ a { color: inherit; }
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  opacity: 0.9;
   color: var(--white);
   text-align: center;
   text-decoration: none;
@@ -150,11 +241,17 @@ a { color: inherit; }
 
 .portrait-sprite {
   flex: 0 0 auto;
-  width: 84px;
+  width: 105px;
   aspect-ratio: 544 / 736;
   background: url("assets/elliah-portrait-sheet.png") 0 0 / 300% 300% no-repeat;
   image-rendering: pixelated;
   animation: portrait-frames var(--sync-cycle) steps(1, end) infinite;
+}
+
+.footer-portrait {
+  display: grid;
+  place-items: center;
+  opacity: 0.9;
 }
 
 .creator-copy {
@@ -233,6 +330,26 @@ a { color: inherit; }
   width: 100%;
   height: auto;
   border-radius: 23%;
+  -webkit-clip-path: polygon(
+    100% 50%, 99.57% 74.18%, 98.27% 82.63%, 96.06% 88.51%,
+    92.86% 92.86%, 88.51% 96.06%, 82.63% 98.27%, 74.18% 99.57%,
+    50% 100%, 25.82% 99.57%, 17.37% 98.27%, 11.49% 96.06%,
+    7.14% 92.86%, 3.94% 88.51%, 1.73% 82.63%, 0.43% 74.18%,
+    0% 50%, 0.43% 25.82%, 1.73% 17.37%, 3.94% 11.49%,
+    7.14% 7.14%, 11.49% 3.94%, 17.37% 1.73%, 25.82% 0.43%,
+    50% 0%, 74.18% 0.43%, 82.63% 1.73%, 88.51% 3.94%,
+    92.86% 7.14%, 96.06% 11.49%, 98.27% 17.37%, 99.57% 25.82%
+  );
+  clip-path: polygon(
+    100% 50%, 99.57% 74.18%, 98.27% 82.63%, 96.06% 88.51%,
+    92.86% 92.86%, 88.51% 96.06%, 82.63% 98.27%, 74.18% 99.57%,
+    50% 100%, 25.82% 99.57%, 17.37% 98.27%, 11.49% 96.06%,
+    7.14% 92.86%, 3.94% 88.51%, 1.73% 82.63%, 0.43% 74.18%,
+    0% 50%, 0.43% 25.82%, 1.73% 17.37%, 3.94% 11.49%,
+    7.14% 7.14%, 11.49% 3.94%, 17.37% 1.73%, 25.82% 0.43%,
+    50% 0%, 74.18% 0.43%, 82.63% 1.73%, 88.51% 3.94%,
+    92.86% 7.14%, 96.06% 11.49%, 98.27% 17.37%, 99.57% 25.82%
+  );
   background: #08090d;
   image-rendering: pixelated;
 }
@@ -337,7 +454,6 @@ a { color: inherit; }
   min-height: 104px;
   margin: -104px auto 0;
   padding: 17px 0;
-  border-top: 1px solid rgba(53, 61, 73, 0.55);
   color: var(--muted);
   font-family: var(--ui);
   font-size: 0.74rem;
@@ -351,7 +467,7 @@ a { color: inherit; }
   letter-spacing: 0;
 }
 
-.site-footer div {
+.site-footer .footer-links {
   display: flex;
   justify-content: center;
   gap: clamp(18px, 3vw, 32px);
@@ -383,40 +499,75 @@ a { color: inherit; }
 
 @keyframes generated-wave-pulse {
   0% {
-    opacity: 0.34;
-    transform: translate(-50%, -50%) scale(0.34);
-    animation-timing-function: steps(3, end);
+    opacity: 0.15;
+    transform: translate(-50%, -50%) scale(0.28);
   }
-  14% {
-    opacity: 0.3;
-    transform: translate(-50%, -50%) scale(1.25);
+  35% {
+    opacity: 0.135;
+    transform: translate(-50%, -50%) scale(4.7);
   }
-  33% {
-    opacity: 0.3;
-    transform: translate(-50%, -50%) scale(1.25);
-    animation-timing-function: steps(3, end);
+  70% {
+    opacity: 0.1;
+    transform: translate(-50%, -50%) scale(9.4);
   }
-  47% {
-    opacity: 0.22;
-    transform: translate(-50%, -50%) scale(2.6);
-  }
-  66% {
-    opacity: 0.22;
-    transform: translate(-50%, -50%) scale(2.6);
-    animation-timing-function: steps(3, end);
-  }
-  80% {
-    opacity: 0.13;
-    transform: translate(-50%, -50%) scale(4.6);
-  }
-  92% {
-    opacity: 0.13;
-    transform: translate(-50%, -50%) scale(4.6);
-    animation-timing-function: steps(2, end);
+  90% {
+    opacity: 0.05;
+    transform: translate(-50%, -50%) scale(12.6);
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(8);
+    transform: translate(-50%, -50%) scale(14.4);
+  }
+}
+
+@keyframes crt-flicker {
+  0%, 100% { opacity: 0.76; }
+  19% { opacity: 0.58; }
+  37% { opacity: 0.84; }
+  58% { opacity: 0.68; }
+  76% { opacity: 0.88; }
+  87% { opacity: 0.62; }
+}
+
+@keyframes crt-screen-blink {
+  0%, 100% { opacity: 1; }
+  13% { opacity: 0.94; }
+  31% { opacity: 0.99; }
+  48% { opacity: 0.9; }
+  49% { opacity: 0.98; }
+  72% { opacity: 0.95; }
+  86% { opacity: 0.88; }
+  87% { opacity: 1; }
+}
+
+@keyframes crt-content-jitter {
+  0% { transform: translate(-0.5px, 0); }
+  28% { transform: translate(0.5px, -0.5px); }
+  54% { transform: translate(-0.5px, 0.5px); }
+  76% { transform: translate(0.5px, 0); }
+  100% { transform: translate(0, -0.5px); }
+}
+
+@keyframes crt-tracking {
+  0%, 78%, 100% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  79% {
+    opacity: 0.24;
+    transform: translateY(-22svh);
+  }
+  80% {
+    opacity: 0.36;
+    transform: translateY(-54svh);
+  }
+  81% {
+    opacity: 0.18;
+    transform: translateY(-82svh);
+  }
+  82% {
+    opacity: 0;
+    transform: translateY(-100svh);
   }
 }
 
@@ -427,7 +578,7 @@ a { color: inherit; }
     padding-top: 8px;
   }
 
-  .portrait-sprite { width: 64px; }
+  .portrait-sprite { width: 80px; }
   .creator { gap: 7px; }
 
   .hero {
@@ -449,12 +600,21 @@ a { color: inherit; }
     padding: 19px 0;
   }
 
-  .site-footer div { flex-wrap: wrap; row-gap: 14px; }
+  .site-footer .footer-links { flex-wrap: wrap; row-gap: 14px; }
   .site-footer a { font-size: 0.66rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .radial-waves { display: none; }
+
+  .crt-enabled .crt-overlay,
+  .crt-enabled .crt-overlay::after {
+    animation: none;
+  }
+
+  .crt-enabled .crt-overlay::after {
+    display: none;
+  }
 }
 
 @media (max-width: 390px) {

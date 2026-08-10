@@ -5,19 +5,34 @@
 
   if (!layer || !origin || reducedMotion.matches) return;
 
-  const cycleValue = getComputedStyle(document.documentElement)
-    .getPropertyValue("--sync-cycle")
-    .trim();
-  const cycleMs = cycleValue.endsWith("ms")
-    ? Number.parseFloat(cycleValue)
-    : Number.parseFloat(cycleValue) * 1000;
-  const stepCount = 9;
-  const cadenceMs = cycleMs / stepCount;
+  const ringGapMs = 1000;
+  const ringLifeMs = 3000;
+  let ringTimer;
 
-  function drawPixelRing(canvas) {
+  function addSquirclePath(context, center, radius) {
+    const power = 4.5;
+    const segments = 64;
+
+    for (let index = 0; index <= segments; index += 1) {
+      const angle = (Math.PI * 2 * index) / segments;
+      const cosine = Math.cos(angle);
+      const sine = Math.sin(angle);
+      const x = center + radius * Math.sign(cosine) * Math.abs(cosine) ** (2 / power);
+      const y = center + radius * Math.sign(sine) * Math.abs(sine) ** (2 / power);
+
+      if (index === 0) {
+        context.moveTo(x, y);
+      } else {
+        context.lineTo(x, y);
+      }
+    }
+
+    context.closePath();
+  }
+
+  function drawPixelSquircle(canvas) {
     const context = canvas.getContext("2d");
     const center = canvas.width / 2;
-    const fullCircle = Math.PI * 2;
 
     context.imageSmoothingEnabled = false;
 
@@ -33,8 +48,8 @@
 
     for (const [outerRadius, innerRadius, alpha] of bands) {
       context.beginPath();
-      context.arc(center, center, outerRadius, 0, fullCircle);
-      context.arc(center, center, innerRadius, 0, fullCircle, true);
+      addSquirclePath(context, center, outerRadius);
+      addSquirclePath(context, center, innerRadius);
       context.fillStyle = `rgba(245, 243, 232, ${alpha})`;
       context.fill("evenodd");
     }
@@ -46,33 +61,39 @@
     wave.style.setProperty("--wave-y", `${Math.round(bounds.top + bounds.height / 2)}px`);
   }
 
-  function createWave(delayMs = 0) {
+  function createWave() {
     const wave = document.createElement("canvas");
     wave.className = "radial-wave";
     wave.width = 96;
     wave.height = 96;
-    wave.style.animationDelay = `${delayMs}ms`;
+    wave.style.setProperty("--wave-life", `${ringLifeMs}ms`);
 
-    drawPixelRing(wave);
+    drawPixelSquircle(wave);
     positionWave(wave);
     layer.append(wave);
     wave.addEventListener("animationend", () => wave.remove(), { once: true });
   }
 
-  const portraitAnimation = document.querySelector(".portrait-sprite")?.getAnimations()[0];
-  const portraitPhase = Number(portraitAnimation?.currentTime || 0) % cycleMs;
-  const elapsedSinceTick = portraitPhase % cadenceMs;
-
-  for (let index = stepCount - 1; index >= 0; index -= 1) {
-    createWave(-(elapsedSinceTick + index * cadenceMs));
+  function clearSequence() {
+    window.clearTimeout(ringTimer);
+    layer.querySelectorAll(".radial-wave").forEach((wave) => wave.remove());
   }
 
-  window.setTimeout(() => {
+  function spawnRing() {
+    if (document.hidden) return;
+
     createWave();
-    window.setInterval(() => {
-      if (!document.hidden) createWave();
-    }, cadenceMs);
-  }, cadenceMs - elapsedSinceTick);
+    ringTimer = window.setTimeout(spawnRing, ringGapMs);
+  }
+
+  function startSequence() {
+    clearSequence();
+    spawnRing();
+  }
+
+  startSequence();
+
+  document.addEventListener("visibilitychange", startSequence);
 
   window.addEventListener("resize", () => {
     layer.querySelectorAll(".radial-wave").forEach(positionWave);
