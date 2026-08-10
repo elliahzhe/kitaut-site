@@ -63,7 +63,7 @@
 
   function createWave() {
     const wave = document.createElement("canvas");
-    const brightness = 0.3 + Math.random() * 1.4;
+    const brightness = 0.3 + Math.random() * 0.5;
     wave.className = "radial-wave";
     wave.width = 96;
     wave.height = 96;
