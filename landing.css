@@ -60,18 +60,21 @@ body {
   pointer-events: none;
   border-radius: 50%;
   background: radial-gradient(circle,
-    rgba(42, 49, 62, 0.34) 0 11%,
-    rgba(35, 42, 54, 0.29) 11% 19%,
-    rgba(29, 35, 46, 0.24) 19% 27%,
-    rgba(23, 28, 38, 0.19) 27% 35%,
-    rgba(18, 22, 30, 0.14) 35% 43%,
+    transparent 0 23%,
+    rgba(18, 22, 30, 0.1) 23% 28%,
+    rgba(29, 35, 46, 0.3) 28% 33%,
+    rgba(35, 42, 54, 0.22) 33% 38%,
+    rgba(23, 28, 38, 0.1) 38% 43%,
     transparent 43%);
   opacity: 0.72;
   transform: translate(-50%, -50%) scale(0.92);
   transform-origin: center;
   will-change: transform, opacity;
-  animation: radial-wave-out 3.6s steps(10, end) infinite;
+  animation: radial-wave-out 4.2s steps(12, end) infinite;
 }
+
+.radial-pulse--two { animation-delay: -1.4s; }
+.radial-pulse--three { animation-delay: -2.8s; }
 
 body::before {
   content: "";
@@ -88,19 +91,6 @@ body::before {
   background-size: 3px 3px;
   mix-blend-mode: soft-light;
   opacity: 0.72;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  z-index: 20;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(ellipse 72% 76% at 50% 42%,
-    transparent 0 61%,
-    rgba(0, 0, 0, 0.16) 61% 72%,
-    rgba(0, 0, 0, 0.32) 72% 84%,
-    rgba(0, 0, 0, 0.54) 84% 100%);
 }
 
 a { color: inherit; }
@@ -394,12 +384,11 @@ a { color: inherit; }
 
 @keyframes radial-wave-out {
   0% {
-    opacity: 0.85;
-    transform: translate(-50%, -50%) scale(0.26);
+    opacity: 0.72;
+    transform: translate(-50%, -50%) scale(0.24);
   }
-  80% { opacity: 0.6; }
   100% {
-    opacity: 0;
+    opacity: 0.04;
     transform: translate(-50%, -50%) scale(1.25);
   }
 }
