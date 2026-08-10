@@ -45,21 +45,14 @@ body {
   margin: 0;
   overflow-x: hidden;
   color: var(--white);
-  background:
-    radial-gradient(ellipse 46% 52% at 50% 34%,
-      rgba(42, 49, 62, 0.34) 0 11%,
-      rgba(35, 42, 54, 0.29) 11% 19%,
-      rgba(29, 35, 46, 0.24) 19% 27%,
-      rgba(23, 28, 38, 0.19) 27% 35%,
-      rgba(18, 22, 30, 0.14) 35% 43%,
-      transparent 43%),
-    linear-gradient(180deg,
-      #08090d 0 17%,
-      #090a0e 17% 34%,
-      #0a0b0f 34% 51%,
-      #0b0c10 51% 68%,
-      #0c0e13 68% 85%,
-      #0d1016 85% 100%);
+  background-color: var(--bg);
+  background-image: radial-gradient(ellipse 46% 52% at 50% 34%,
+    rgba(42, 49, 62, 0.34) 0 11%,
+    rgba(35, 42, 54, 0.29) 11% 19%,
+    rgba(29, 35, 46, 0.24) 19% 27%,
+    rgba(23, 28, 38, 0.19) 27% 35%,
+    rgba(18, 22, 30, 0.14) 35% 43%,
+    transparent 43%);
   font-family: var(--pixel);
   font-synthesis: none;
 }
