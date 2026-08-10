@@ -126,7 +126,6 @@ a { color: inherit; }
   width: 68px;
   aspect-ratio: 544 / 736;
   background: url("assets/elliah-portrait-sheet.png") 0 0 / 300% 300% no-repeat;
-  filter: drop-shadow(4px 5px 0 rgba(0, 201, 213, 0.17));
   image-rendering: pixelated;
   animation: portrait-frames 1.5s steps(1, end) infinite;
 }
