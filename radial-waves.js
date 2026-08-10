@@ -63,10 +63,16 @@
 
   function createWave() {
     const wave = document.createElement("canvas");
+    const brightness = 0.3 + Math.random() * 1.4;
     wave.className = "radial-wave";
     wave.width = 96;
     wave.height = 96;
     wave.style.setProperty("--wave-life", `${ringLifeMs}ms`);
+    wave.style.setProperty("--wave-brightness", brightness.toFixed(3));
+    wave.style.setProperty("--wave-opacity-start", (0.075 * brightness).toFixed(4));
+    wave.style.setProperty("--wave-opacity-mid", (0.0675 * brightness).toFixed(4));
+    wave.style.setProperty("--wave-opacity-far", (0.05 * brightness).toFixed(4));
+    wave.style.setProperty("--wave-opacity-end", (0.025 * brightness).toFixed(4));
 
     drawPixelSquircle(wave);
     positionWave(wave);

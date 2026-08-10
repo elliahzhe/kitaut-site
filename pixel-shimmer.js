@@ -11,6 +11,7 @@
   const pixelSize = gridSize - gridLineSize;
   const colors = ["245, 243, 232", "0, 201, 213", "244, 211, 94"];
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const randomBrightness = () => 0.15 + Math.random() * 2.2;
 
   let width = 0;
   let height = 0;
@@ -27,7 +28,9 @@
       y: Math.floor((Math.random() * height) / gridSize) * gridSize,
       phase: Math.random() * Math.PI * 2,
       speed: 0.00035 + Math.random() * 0.00055,
-      color: colors[Math.floor(Math.random() * colors.length)]
+      color: colors[Math.floor(Math.random() * colors.length)],
+      brightness: randomBrightness(),
+      wasLit: false
     }));
   }
 
@@ -50,10 +53,17 @@
     for (const pixel of pixels) {
       const wave = (Math.sin(time * pixel.speed + pixel.phase) + 1) * 0.5;
       const step = Math.floor(wave * 4) / 3;
+      const isLit = step >= 0.34;
 
-      if (step < 0.34) continue;
+      if (isLit && !pixel.wasLit) {
+        pixel.brightness = randomBrightness();
+      }
 
-      const alpha = 0.04 + step * 0.1;
+      pixel.wasLit = isLit;
+
+      if (!isLit) continue;
+
+      const alpha = (0.04 + step * 0.1) * pixel.brightness;
 
       context.fillStyle = `rgba(${pixel.color}, ${alpha})`;
       context.fillRect(
