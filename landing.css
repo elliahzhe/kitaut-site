@@ -51,21 +51,26 @@ body {
   font-synthesis: none;
 }
 
-.radial-pulse {
+.radial-waves {
   position: fixed;
   z-index: 0;
-  top: 34svh;
-  left: 50%;
-  width: 110vmax;
-  aspect-ratio: 1;
+  inset: 0;
+  overflow: hidden;
   pointer-events: none;
-  background: url("assets/moon-glow.png") center / 100% 100% no-repeat;
-  opacity: 0.68;
+}
+
+.radial-wave {
+  position: absolute;
+  top: var(--wave-y);
+  left: var(--wave-x);
+  width: clamp(132px, 18vmax, 220px);
+  aspect-ratio: 1;
+  opacity: 0;
   image-rendering: pixelated;
-  transform: translate(-50%, -50%) scale(0.92);
+  transform: translate(-50%, -50%) scale(0.34);
   transform-origin: center;
   will-change: transform, opacity;
-  animation: radial-wave-out var(--sync-cycle) steps(9, end) infinite;
+  animation: generated-wave-out var(--sync-cycle) steps(9, end) forwards;
 }
 
 .pixel-shimmer {
@@ -390,20 +395,21 @@ a { color: inherit; }
   50% { opacity: 0.28; transform: scale(1.1); }
 }
 
-@keyframes radial-wave-out {
+@keyframes generated-wave-out {
   0% {
-    opacity: 0.68;
-    transform: translate(-50%, -50%) scale(0.18);
+    opacity: 0.34;
+    transform: translate(-50%, -50%) scale(0.34);
+  }
+  55% {
+    opacity: 0.17;
   }
   100% {
-    opacity: 0.06;
-    transform: translate(-50%, -50%) scale(1.18);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(8);
   }
 }
 
 @media (max-width: 700px) {
-  .radial-pulse { top: 30svh; }
-
   .game-moon {
     top: 154px;
     right: -40px;
@@ -445,6 +451,10 @@ a { color: inherit; }
 
   .site-footer div { flex-wrap: wrap; row-gap: 14px; }
   .site-footer a { font-size: 0.66rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radial-waves { display: none; }
 }
 
 @media (max-width: 390px) {
