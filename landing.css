@@ -281,21 +281,19 @@ a { color: inherit; }
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .store-badge {
   display: flex;
   align-items: center;
-  width: 178px;
-  height: 54px;
-  padding: 6px 13px;
-  border: 1px solid rgba(245, 243, 232, 0.78);
-  border-radius: 9px;
-  opacity: 0.72;
-  background: #050608;
-  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.34);
-  filter: saturate(0.7);
+  width: 190px;
+  height: 56px;
+  padding: 6px 12px;
+  border: 1px solid rgba(245, 243, 232, 0.92);
+  border-radius: 8px;
+  opacity: 0.9;
+  background: #030405;
   font-family: var(--ui);
   text-align: left;
   user-select: none;
@@ -303,28 +301,32 @@ a { color: inherit; }
 
 .store-icon {
   flex: 0 0 auto;
-  width: 29px;
+  width: 28px;
   max-height: 34px;
-  margin-right: 10px;
+  margin-right: 11px;
 }
 
 .play-icon { width: 30px; }
 
 .store-badge span {
   display: grid;
+  min-width: 0;
+  align-content: center;
   line-height: 1;
 }
 
 .store-badge small {
-  margin-bottom: 4px;
-  font-size: 0.57rem;
-  letter-spacing: 0.01em;
+  margin-bottom: 5px;
+  font-size: 0.5rem;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
 }
 
 .store-badge strong {
-  font-size: 1.12rem;
-  font-weight: 700;
-  letter-spacing: -0.05em;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  white-space: nowrap;
 }
 
 .site-footer {
@@ -411,7 +413,7 @@ a { color: inherit; }
   .logo-sprite { transform: scale(1.15); }
 
   .store-row { display: grid; grid-template-columns: 1fr; }
-  .store-badge { width: 176px; }
+  .store-badge { width: 190px; }
 
   .site-footer {
     align-items: flex-start;
