@@ -247,7 +247,7 @@ a { color: inherit; }
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  opacity: 0.9;
+  opacity: 0.6;
   color: var(--white);
   text-align: center;
   text-decoration: none;
@@ -260,15 +260,6 @@ a { color: inherit; }
   background: url("assets/elliah-portrait-sheet.png") 0 0 / 300% 300% no-repeat;
   image-rendering: pixelated;
   animation: portrait-frames var(--sync-cycle) steps(1, end) infinite;
-}
-
-.footer-name {
-  display: inline-grid;
-  place-items: center;
-  opacity: 0.9;
-  color: var(--white);
-  text-align: center;
-  text-decoration: none;
 }
 
 .creator-copy {
@@ -329,6 +320,7 @@ a { color: inherit; }
   display: grid;
   justify-items: center;
   width: min(720px, 100%);
+  transform: translateY(clamp(-24px, -2.2svh, -14px));
 }
 
 .icon-orbit {
@@ -394,27 +386,29 @@ a { color: inherit; }
 }
 
 .coming-soon {
-  margin: 8px 0 28px;
-  color: var(--yellow);
+  margin: 24px 0 20px;
+  color: var(--red);
   font-family: var(--ui);
   font-size: clamp(0.78rem, 2vw, 0.92rem);
   font-weight: 400;
   letter-spacing: 0.36em;
   text-transform: uppercase;
-  text-shadow: 0 0 22px rgba(244, 211, 94, 0.24);
+  text-shadow: 0 0 22px rgba(255, 59, 47, 0.24);
 }
 
 .store-row {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   justify-items: center;
+  width: min(390px, 100%);
   gap: 10px;
 }
 
 .store-badge {
   display: flex;
   align-items: center;
-  width: 190px;
+  width: 100%;
+  max-width: 190px;
   height: 56px;
   padding: 6px 12px;
   border: 1px solid rgba(245, 243, 232, 0.92);
@@ -622,7 +616,7 @@ a { color: inherit; }
   .logo-stage { width: 149px; height: 33px; margin-bottom: 18px; }
   .logo-sprite { transform: scale(1.15); }
 
-  .store-badge { width: 190px; }
+  .store-badge { width: 100%; max-width: 190px; }
 
   .site-footer {
     width: min(100% - 28px, 1180px);
@@ -650,6 +644,19 @@ a { color: inherit; }
 
 @media (max-width: 390px) {
   .hero { padding-top: 20px; }
+
+  .store-row { gap: 6px; }
+
+  .store-badge {
+    height: 52px;
+    padding: 5px 7px;
+  }
+
+  .store-icon { width: 24px; margin-right: 6px; }
+  .apple-icon { width: 22px; height: 30px; }
+  .play-icon { width: 24px; }
+  .store-badge small { margin-bottom: 3px; font-size: 0.42rem; }
+  .store-badge strong { font-size: 0.78rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
