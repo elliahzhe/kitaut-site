@@ -244,10 +244,10 @@ a { color: inherit; }
 
 .logo-stage {
   position: relative;
-  width: 452px;
-  height: 98px;
+  width: 226px;
+  height: 49px;
   max-width: 100%;
-  margin: 4px 0 10px;
+  margin: 4px 0 14px;
   overflow: hidden;
 }
 
@@ -259,7 +259,7 @@ a { color: inherit; }
   background-position: -63px -114px;
   filter: drop-shadow(1px 1px 0 rgba(255, 255, 255, 0.12));
   image-rendering: pixelated;
-  transform: scale(3.5);
+  transform: scale(1.75);
   transform-origin: 0 0;
   animation: logo-frames 2.25s steps(1, end) infinite;
 }
@@ -403,8 +403,8 @@ a { color: inherit; }
 
   .icon-orbit { width: 162px; margin-bottom: 28px; }
 
-  .logo-stage { width: 297px; height: 65px; margin-bottom: 14px; }
-  .logo-sprite { transform: scale(2.3); }
+  .logo-stage { width: 149px; height: 33px; margin-bottom: 18px; }
+  .logo-sprite { transform: scale(1.15); }
 
   .store-row { display: grid; grid-template-columns: 1fr; }
   .store-badge { width: 176px; }
