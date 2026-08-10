@@ -39,6 +39,7 @@ html {
 
 body {
   position: relative;
+  isolation: isolate;
   min-height: 100svh;
   margin: 0;
   overflow-x: hidden;
@@ -60,6 +61,23 @@ body {
       #0d1016 85% 100%);
   font-family: var(--pixel);
   font-synthesis: none;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  z-index: 30;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%,
+      rgba(245, 243, 232, 0.13) 0 0.55px,
+      transparent 0.7px),
+    linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.28) 1px, transparent 1px);
+  background-size: 3px 3px;
+  mix-blend-mode: soft-light;
+  opacity: 0.72;
 }
 
 body::after {
