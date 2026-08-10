@@ -171,7 +171,7 @@ a { color: inherit; }
 
 .creator-copy strong {
   color: var(--muted);
-  font-family: var(--meta);
+  font-family: var(--ui);
   font-size: 0.74rem;
   font-weight: 400;
   letter-spacing: 0;
@@ -183,7 +183,7 @@ a { color: inherit; }
   color: var(--muted);
   font-family: var(--ui);
   font-size: 0.76rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.13em;
   text-decoration: none;
   text-transform: uppercase;
@@ -270,7 +270,7 @@ a { color: inherit; }
   color: var(--yellow);
   font-family: var(--ui);
   font-size: clamp(0.78rem, 2vw, 0.92rem);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.36em;
   text-transform: uppercase;
   text-shadow: 0 0 22px rgba(244, 211, 94, 0.24);
@@ -344,7 +344,8 @@ a { color: inherit; }
 
 .site-footer p {
   margin: 0;
-  font-family: var(--meta);
+  font-family: var(--ui);
+  font-weight: 400;
   letter-spacing: 0;
 }
 
