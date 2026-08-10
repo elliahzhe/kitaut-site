@@ -70,7 +70,7 @@ body {
   transform: translate(-50%, -50%) scale(0.34);
   transform-origin: center;
   will-change: transform, opacity;
-  animation: generated-wave-out var(--sync-cycle) steps(9, end) forwards;
+  animation: generated-wave-pulse var(--sync-cycle) linear forwards;
 }
 
 .pixel-shimmer {
@@ -395,13 +395,38 @@ a { color: inherit; }
   50% { opacity: 0.28; transform: scale(1.1); }
 }
 
-@keyframes generated-wave-out {
+@keyframes generated-wave-pulse {
   0% {
     opacity: 0.34;
     transform: translate(-50%, -50%) scale(0.34);
+    animation-timing-function: steps(3, end);
   }
-  55% {
-    opacity: 0.17;
+  14% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1.25);
+  }
+  33% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1.25);
+    animation-timing-function: steps(3, end);
+  }
+  47% {
+    opacity: 0.22;
+    transform: translate(-50%, -50%) scale(2.6);
+  }
+  66% {
+    opacity: 0.22;
+    transform: translate(-50%, -50%) scale(2.6);
+    animation-timing-function: steps(3, end);
+  }
+  80% {
+    opacity: 0.13;
+    transform: translate(-50%, -50%) scale(4.6);
+  }
+  92% {
+    opacity: 0.13;
+    transform: translate(-50%, -50%) scale(4.6);
+    animation-timing-function: steps(2, end);
   }
   100% {
     opacity: 0;
