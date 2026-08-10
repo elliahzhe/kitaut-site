@@ -43,9 +43,13 @@ html {
 body {
   position: relative;
   isolation: isolate;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  height: 100svh;
   min-height: 100svh;
   margin: 0;
   overflow-x: hidden;
+  overflow-y: auto;
   color: var(--white);
   background-color: var(--bg);
   font-family: var(--pixel);
@@ -223,9 +227,9 @@ a { color: inherit; }
   align-items: center;
   justify-content: center;
   width: min(1180px, calc(100% - 48px));
-  min-height: 116px;
+  min-height: clamp(52px, 9svh, 78px);
   margin: 0 auto;
-  padding: 14px 0 8px;
+  padding: clamp(8px, 1.5svh, 14px) 0 6px;
 }
 
 .creator {
@@ -241,7 +245,7 @@ a { color: inherit; }
 
 .portrait-sprite {
   flex: 0 0 auto;
-  width: 105px;
+  width: clamp(68px, 13svh, 105px);
   aspect-ratio: 544 / 736;
   background: url("assets/elliah-portrait-sheet.png") 0 0 / 300% 300% no-repeat;
   image-rendering: pixelated;
@@ -303,8 +307,8 @@ a { color: inherit; }
 .hero {
   display: grid;
   place-items: center;
-  min-height: calc(100svh - 210px);
-  padding: 12px 24px 88px;
+  min-height: 0;
+  padding: clamp(8px, 1.8svh, 14px) 24px;
   text-align: center;
 }
 
@@ -318,9 +322,9 @@ a { color: inherit; }
   position: relative;
   display: grid;
   place-items: center;
-  width: clamp(170px, 23vw, 230px);
+  width: clamp(148px, min(23vw, 26svh), 230px);
   aspect-ratio: 1;
-  margin-bottom: 30px;
+  margin-bottom: clamp(18px, 3svh, 30px);
 }
 
 .game-icon {
@@ -449,11 +453,11 @@ a { color: inherit; }
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  gap: 14px;
+  gap: clamp(8px, 1.4svh, 14px);
   width: min(1180px, calc(100% - 48px));
-  min-height: 104px;
-  margin: -104px auto 0;
-  padding: 17px 0;
+  min-height: 0;
+  margin: 0 auto;
+  padding: clamp(8px, 1.7svh, 17px) 0;
   color: var(--muted);
   font-family: var(--ui);
   font-size: 0.74rem;
@@ -499,19 +503,19 @@ a { color: inherit; }
 
 @keyframes generated-wave-pulse {
   0% {
-    opacity: 0.15;
+    opacity: 0.075;
     transform: translate(-50%, -50%) scale(0.28);
   }
   35% {
-    opacity: 0.135;
+    opacity: 0.0675;
     transform: translate(-50%, -50%) scale(4.7);
   }
   70% {
-    opacity: 0.1;
+    opacity: 0.05;
     transform: translate(-50%, -50%) scale(9.4);
   }
   90% {
-    opacity: 0.05;
+    opacity: 0.025;
     transform: translate(-50%, -50%) scale(12.6);
   }
   100% {
@@ -574,19 +578,22 @@ a { color: inherit; }
 @media (max-width: 700px) {
   .site-header {
     width: min(100% - 28px, 1180px);
-    min-height: 92px;
-    padding-top: 8px;
+    min-height: clamp(46px, 7svh, 64px);
+    padding-top: 6px;
   }
 
-  .portrait-sprite { width: 80px; }
+  .portrait-sprite { width: clamp(58px, 8svh, 80px); }
   .creator { gap: 7px; }
 
   .hero {
-    min-height: calc(100svh - 154px);
-    padding: 34px 18px 132px;
+    min-height: 0;
+    padding: clamp(8px, 1.5svh, 15px) 18px;
   }
 
-  .icon-orbit { width: 162px; margin-bottom: 28px; }
+  .icon-orbit {
+    width: clamp(130px, 18svh, 162px);
+    margin-bottom: clamp(16px, 2.6svh, 28px);
+  }
 
   .logo-stage { width: 149px; height: 33px; margin-bottom: 18px; }
   .logo-sprite { transform: scale(1.15); }
@@ -595,9 +602,9 @@ a { color: inherit; }
 
   .site-footer {
     width: min(100% - 28px, 1180px);
-    min-height: 124px;
-    margin-top: -124px;
-    padding: 19px 0;
+    min-height: 0;
+    margin-top: 0;
+    padding: clamp(8px, 1.5svh, 15px) 0;
   }
 
   .site-footer .footer-links { flex-wrap: wrap; row-gap: 14px; }
