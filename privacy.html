@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Privacy Policy for the KITAUT iPhone game.">
+  <meta name="description" content="Privacy Policy for the KITAUT game on iOS and Android.">
   <title>KITAUT Privacy Policy</title>
   <link rel="canonical" href="https://elliahzhe.github.io/kitaut-site/privacy/">
   <link rel="stylesheet" href="styles.css?v=3">
@@ -13,18 +13,18 @@
     <header>
       <p class="eyebrow">Privacy policy</p>
       <h1 class="brand"><img src="logo_simple.png" alt="KITAUT"></h1>
-      <p class="lede">This policy explains what data KITAUT uses, why it is used, and the choices available to you.</p>
-      <p class="meta">Effective date: 4 August 2026 · Last updated: 4 August 2026</p>
+      <p class="lede">This policy explains what data KITAUT and its service providers may process, why it is used, and the choices available to you.</p>
+      <p class="meta">Effective date: 4 August 2026 · Last updated: 10 August 2026</p>
     </header>
 
     <section>
       <h2>Who is responsible for your data</h2>
-      <p>KITAUT is provided by Ilia Zhemaitis, publishing under the name elliah.games (“we,” “us,” or “the developer”). We act as the controller of personal data collected through the game. For privacy questions or requests, email <a href="mailto:elliahzhe@gmail.com?subject=KITAUT%20Privacy">elliahzhe@gmail.com</a>.</p>
+      <p>KITAUT is provided by Ilia Zhemaitis, publishing under the name elliah.games (“we,” “us,” or “the developer”). We are responsible for the processing activities that we determine. Third-party services described below may process data on our behalf or act as separate controllers under their own privacy terms. For privacy questions or requests, email <a href="mailto:elliahzhe@gmail.com?subject=KITAUT%20Privacy">elliahzhe@gmail.com</a>.</p>
     </section>
 
     <section>
       <h2>Data stored only on your device</h2>
-      <p>KITAUT stores game settings and progress data on your device, including your best score, tutorial state, session death count, and world-generation settings. This data is used to run the game and remember your choices. It normally remains on your device until you reset the game or delete the app.</p>
+      <p>KITAUT stores game settings and progress data on your device, including your best score, tutorial state, completed-attempt count, advertising timing state, and world-generation settings. This data is used to run the game, remember your choices, and apply the in-game advertising schedule. The Google User Messaging Platform may also store your current privacy choice on the device. Device-local data normally remains until you reset the game, clear the app's data, or delete the app.</p>
     </section>
 
     <section>
@@ -39,18 +39,51 @@
         <li>country-level location derived from the request IP address; GameAnalytics states that it does not store the IP address itself;</li>
         <li>technical diagnostic, crash, or performance information to the extent processed by the version of the GameAnalytics SDK included in the app.</li>
       </ul>
-      <p>Analytics data is associated with a pseudonymous identifier, so it may still be personal data. We use it for analytics and app functionality. We do not use KITAUT analytics for targeted advertising, sell it, or combine it with data from other companies' apps or websites to track you.</p>
-      <p>GameAnalytics processes this data on our behalf. Its documentation and privacy materials are available at <a href="https://www.gameanalytics.com/trust">GameAnalytics Trust Center</a>. Data may be processed in countries other than your own using the safeguards described by GameAnalytics.</p>
+      <p>Analytics data is associated with a pseudonymous identifier, so it may still be personal data. We use it for analytics and app functionality. We do not provide KITAUT's GameAnalytics event stream to AdMob, sell it, or combine it ourselves with data from other companies' apps or websites for targeted advertising.</p>
+      <p>GameAnalytics processes this data on our behalf. Its documentation and privacy materials are available at the <a href="https://www.gameanalytics.com/trust">GameAnalytics Trust Center</a>. Data may be processed in countries other than your own using the safeguards described by GameAnalytics.</p>
     </section>
 
     <section>
-      <h2>Game Center</h2>
-      <p>KITAUT can authenticate with Apple Game Center, submit your best score, and display Apple's leaderboard interface. We do not retrieve or log your Game Center player ID, alias, or display name. Apple processes Game Center data under its own privacy terms. You can control Game Center from iOS Settings.</p>
+      <h2>Interstitial advertising and Google Mobile Ads</h2>
+      <p>KITAUT uses Google AdMob and the Google Mobile Ads SDK to request and display full-screen interstitial advertisements between selected completed attempts. Ads are not displayed during active gameplay. Whether an ad is personalized, non-personalized, limited, or unavailable depends on your region, privacy choices, platform settings, available consent signals, and Google's ad-serving rules.</p>
+      <p>When an ad is requested or displayed, Google Mobile Ads and participating advertising providers may automatically collect or process:</p>
+      <ul>
+        <li>the device's IP address, which may be used to estimate coarse or general location;</li>
+        <li>device identifiers, such as an advertising identifier when the operating system makes it available, and other app- or developer-scoped identifiers;</li>
+        <li>advertising data, such as ad requests, ads shown, impressions, and interactions with advertisements;</li>
+        <li>product-interaction data, such as app launches, taps, clicks, and video views;</li>
+        <li>crash logs and other technical diagnostic information;</li>
+        <li>performance information, such as app or SDK launch time, hang rate, and energy usage;</li>
+        <li>device, app, operating-system, language, network, and SDK information needed to deliver, secure, measure, and troubleshoot advertisements.</li>
+      </ul>
+      <p>This information may be used to deliver and measure ads, provide personalized advertising where permitted, provide contextual or non-personalized ads, perform advertising analytics, limit repeated ads, detect fraud and abuse, maintain security, diagnose failures, and improve the advertising services. The exact data processed varies by device, operating system, consent choice, ad response, and SDK configuration. We normally receive aggregated advertising reports rather than the raw identifiers, IP addresses, or diagnostic records collected by Google.</p>
+      <p>Google and eligible advertising partners may process this information under their own terms. You can learn more in the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>, Google's explanation of <a href="https://policies.google.com/technologies/partner-sites">how information from apps that use Google services is used</a>, and the <a href="https://developers.google.com/admob/ios/privacy/data-disclosure">Google Mobile Ads SDK data-disclosure guide</a>.</p>
+    </section>
+
+    <section>
+      <h2>Advertising consent and privacy choices</h2>
+      <p>KITAUT uses Google's User Messaging Platform (UMP) to obtain and manage advertising privacy choices. The game asks UMP to refresh consent information at each launch and requests an ad only after UMP reports that ads may be requested. Where required, UMP presents a regional message explaining the available choices and the advertising providers involved.</p>
+      <p>Depending on the applicable rules, you may be able to:</p>
+      <ul>
+        <li>consent to personalized advertising;</li>
+        <li>decline consent and receive non-personalized or limited ads where available;</li>
+        <li>manage individual advertising purposes and providers;</li>
+        <li>opt out of the sale or sharing of personal information or targeted advertising under supported US state laws.</li>
+      </ul>
+      <p>When UMP reports that an ongoing privacy-options entry point is required, the ABOUT screen displays <strong>AD PRIVACY CHOICES</strong>. That button opens Google's native privacy-options form; it does not open this webpage. If UMP reports that an entry point is not required in your region, the button may not be shown. You can still contact us about a privacy request using the address below.</p>
+      <p>Refusing or withdrawing advertising consent does not block access to the game. Depending on law and available ad inventory, KITAUT may show non-personalized or limited ads, or may continue without an ad. In some US jurisdictions, disclosures to an advertising provider for personalized advertising may legally be treated as a “sale,” “sharing,” or targeted advertising even when no money is paid for personal data; the UMP form provides the applicable opt-out choice.</p>
+      <p>KITAUT does not currently request Apple's App Tracking Transparency (ATT) permission and does not display an ATT prompt. Consequently, the app does not obtain permission to access the iOS advertising identifier (IDFA) for cross-app tracking. Google Mobile Ads may still process other identifiers and signals that the operating system permits. If this implementation changes, we will update this policy and the App Store privacy disclosures before release.</p>
+    </section>
+
+    <section>
+      <h2>Game Center and Google Play Games Services</h2>
+      <p>On iOS, KITAUT can authenticate with Apple Game Center, submit your best score, and display Apple's leaderboard interface. We do not retrieve or log your Game Center player ID, alias, or display name. Apple processes Game Center data under its own privacy terms, and you can control Game Center from iOS Settings.</p>
+      <p>On Android, KITAUT may use Google Play Games Services for sign-in and leaderboards. Google processes account and leaderboard information under its own privacy terms. We use the service only to provide the requested game-services features.</p>
     </section>
 
     <section>
       <h2>Sharing record images and Photos</h2>
-      <p>When you tap SHARE, KITAUT creates a record image locally and presents the iOS share sheet. Nothing is shared until you choose a destination. If you choose Save Image, iOS may request permission to add that image to Photos. KITAUT does not read your photo library and does not access the camera or microphone.</p>
+      <p>When you tap SHARE, KITAUT creates a record image locally and presents the operating system's share interface. Nothing is shared until you choose a destination. If you choose Save Image on iOS, the system may request permission to add that image to Photos. KITAUT does not read your photo library and does not access the camera or microphone.</p>
     </section>
 
     <section>
@@ -59,19 +92,27 @@
     </section>
 
     <section>
+      <h2>Service providers, disclosure, and international processing</h2>
+      <p>We disclose data only as described in this policy: to GameAnalytics for optional gameplay analytics; to Google and eligible advertising providers for advertising, consent management, measurement, security, and diagnostics; to Apple or Google for platform game services; to a destination you select when sharing; and when required by law or necessary to protect users, the game, or our legal rights.</p>
+      <p>These providers may process data in countries other than your own. Their privacy notices describe their roles, retention practices, transfer safeguards, and available rights. We do not sell your GameAnalytics gameplay event stream. Advertising-related processing may nevertheless be classified as a sale or sharing under certain laws, as explained above.</p>
+    </section>
+
+    <section>
       <h2>Legal bases and your choices</h2>
-      <p>Where applicable law requires a legal basis, device-local processing is necessary to provide the game, support messages are processed to answer your request, and optional analytics is processed only after your consent. You may decline analytics or withdraw consent without losing gameplay access.</p>
-      <p>Depending on where you live, you may have rights to access, correct, delete, restrict, or obtain a copy of personal data, or object to certain processing. Email us to exercise a right. We may need information sufficient to verify and locate the relevant pseudonymous record. You may also complain to your local data-protection authority.</p>
+      <p>Where applicable law requires a legal basis, device-local processing is necessary to provide the game; support messages are processed to answer your request; optional GameAnalytics processing is based on your consent; and advertising-related processing may rely on consent, legitimate interests, compliance with law, or another permitted basis depending on the purpose and jurisdiction. UMP presents the applicable advertising choices before KITAUT requests ads when required.</p>
+      <p>You may decline or withdraw GameAnalytics consent in Settings without losing gameplay access. Where the UMP privacy-options button is required, you may use it to change advertising choices. Refusing consent does not prevent you from playing.</p>
+      <p>Depending on where you live, you may have rights to access, correct, delete, restrict, or obtain a copy of personal data, withdraw consent, or object to certain processing, including sale, sharing, or targeted advertising. Email us to exercise a right. We may need information sufficient to verify and locate the relevant pseudonymous record. Requests concerning data controlled directly by Google, Apple, or GameAnalytics may also need to be submitted to that provider. You may complain to your local data-protection authority.</p>
     </section>
 
     <section>
       <h2>Retention and deletion</h2>
-      <p>Local game data remains until you reset the game or delete the app. Support correspondence is retained only as long as reasonably necessary. GameAnalytics data is retained under our account settings, contractual requirements, and the <a href="https://www.gameanalytics.com/trust/data-retention-and-deletion-policy">GameAnalytics Data Retention and Deletion Policy</a>. To request deletion of analytics data, contact us at the email above.</p>
+      <p>Local game data and locally stored privacy choices remain until they expire, are reset, the app's data is cleared, or the app is deleted. Deleting the app does not automatically delete information that a service provider previously processed off the device.</p>
+      <p>Support correspondence is retained only as long as reasonably necessary. GameAnalytics data is retained under our account settings, contractual requirements, and the <a href="https://www.gameanalytics.com/trust/data-retention-and-deletion-policy">GameAnalytics Data Retention and Deletion Policy</a>. Google retains advertising, consent, security, and diagnostic data according to its own policies and applicable settings. To request assistance with deletion or another privacy right, contact us at the email above.</p>
     </section>
 
     <section>
       <h2>Children</h2>
-      <p>KITAUT is not directed to children under 13. We do not knowingly enable optional analytics for a child without any consent required by applicable law. If you believe a child has provided personal data improperly, contact us so we can investigate and request deletion.</p>
+      <p>KITAUT is not directed to children under 13. We do not knowingly enable optional analytics for a child without any consent required by applicable law. If you believe a child has provided personal data improperly or received advertising without required protections, contact us so we can investigate and request appropriate deletion or restriction.</p>
     </section>
 
     <section>
@@ -81,7 +122,7 @@
 
     <section>
       <h2>Changes to this policy</h2>
-      <p>We may update this policy when the game, service providers, or legal requirements change. We will post the revised version here and update the date above. Material changes will be communicated in the game where required.</p>
+      <p>We may update this policy when the game, advertising or analytics SDKs, service providers, or legal requirements change. We will post the revised version here and update the date above. Material changes will be communicated in the game where required.</p>
     </section>
 
     <section class="card">
