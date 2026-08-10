@@ -46,15 +46,31 @@ body {
   overflow-x: hidden;
   color: var(--white);
   background-color: var(--bg);
-  background-image: radial-gradient(ellipse 46% 52% at 50% 34%,
+  font-family: var(--pixel);
+  font-synthesis: none;
+}
+
+.radial-pulse {
+  position: fixed;
+  z-index: 0;
+  top: 34svh;
+  left: 50%;
+  width: 110vmax;
+  aspect-ratio: 1;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle,
     rgba(42, 49, 62, 0.34) 0 11%,
     rgba(35, 42, 54, 0.29) 11% 19%,
     rgba(29, 35, 46, 0.24) 19% 27%,
     rgba(23, 28, 38, 0.19) 27% 35%,
     rgba(18, 22, 30, 0.14) 35% 43%,
     transparent 43%);
-  font-family: var(--pixel);
-  font-synthesis: none;
+  opacity: 0.72;
+  transform: translate(-50%, -50%) scale(0.92);
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: radial-wave-out 3.6s steps(10, end) infinite;
 }
 
 body::before {
@@ -376,7 +392,21 @@ a { color: inherit; }
   50% { opacity: 0.28; transform: scale(1.1); }
 }
 
+@keyframes radial-wave-out {
+  0% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(0.26);
+  }
+  80% { opacity: 0.6; }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.25);
+  }
+}
+
 @media (max-width: 700px) {
+  .radial-pulse { top: 30svh; }
+
   .game-moon {
     top: 154px;
     right: -40px;
