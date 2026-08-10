@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Silkscreen";
+  src: url("assets/fonts/Silkscreen-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Silkscreen";
+  src: url("assets/fonts/Silkscreen-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
 :root {
   color-scheme: dark;
   --bg: #0b0c10;
@@ -9,8 +25,8 @@
   --yellow: #f4d35e;
   --cyan: #00c9d5;
   --red: #ff3b2f;
-  --pixel: "SFMono-Regular", "Roboto Mono", "Courier New", monospace;
-  --ui: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --pixel: "Silkscreen", "Courier New", monospace;
+  --ui: var(--pixel);
 }
 
 * { box-sizing: border-box; }
@@ -31,6 +47,7 @@ body {
     radial-gradient(circle at 50% 34%, rgba(36, 43, 55, 0.33), transparent 35%),
     linear-gradient(180deg, #0a0b0f 0%, var(--bg) 54%, #0d1016 100%);
   font-family: var(--pixel);
+  font-synthesis: none;
 }
 
 body::after {
@@ -69,7 +86,7 @@ a { color: inherit; }
 .site-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: min(1180px, calc(100% - 48px));
   min-height: 116px;
   margin: 0 auto;
@@ -101,38 +118,23 @@ a { color: inherit; }
 
 .creator-copy strong {
   font-size: clamp(1.03rem, 2vw, 1.35rem);
-  letter-spacing: -0.055em;
+  font-weight: 700;
+  letter-spacing: -0.04em;
   text-shadow: 2px 2px 0 #000;
 }
 
-.creator-copy small {
-  color: var(--muted);
-  font-family: var(--ui);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
-nav {
-  display: flex;
-  gap: clamp(18px, 4vw, 38px);
-}
-
-nav a,
 .site-footer a {
   position: relative;
   color: var(--muted);
   font-family: var(--ui);
   font-size: 0.76rem;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: 0.13em;
   text-decoration: none;
   text-transform: uppercase;
   transition: color 160ms ease;
 }
 
-nav a::after,
 .site-footer a::after {
   content: "";
   position: absolute;
@@ -146,13 +148,9 @@ nav a::after,
   transition: transform 160ms ease;
 }
 
-nav a:hover,
-nav a:focus-visible,
 .site-footer a:hover,
 .site-footer a:focus-visible { color: var(--white); }
 
-nav a:hover::after,
-nav a:focus-visible::after,
 .site-footer a:hover::after,
 .site-footer a:focus-visible::after { transform: scaleX(1); }
 
@@ -178,7 +176,7 @@ nav a:focus-visible::after,
   color: var(--muted);
   font-family: var(--ui);
   font-size: 0.69rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -271,7 +269,7 @@ nav a:focus-visible::after,
   color: var(--yellow);
   font-family: var(--ui);
   font-size: clamp(0.78rem, 2vw, 0.92rem);
-  font-weight: 850;
+  font-weight: 700;
   letter-spacing: 0.36em;
   text-transform: uppercase;
   text-shadow: 0 0 22px rgba(244, 211, 94, 0.24);
@@ -330,8 +328,8 @@ nav a:focus-visible::after,
 
 .store-badge strong {
   font-size: 1.12rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
+  font-weight: 700;
+  letter-spacing: -0.05em;
 }
 
 .store-note {
@@ -397,9 +395,6 @@ nav a:focus-visible::after,
 
   .portrait-sprite { width: 52px; }
   .creator { gap: 11px; }
-  .creator-copy small { display: none; }
-  nav { gap: 16px; }
-  nav a { font-size: 0.65rem; }
 
   .hero {
     min-height: calc(100svh - 154px);
@@ -432,8 +427,6 @@ nav a:focus-visible::after,
 
 @media (max-width: 390px) {
   .creator-copy strong { font-size: 0.92rem; }
-  nav { gap: 12px; }
-  nav a { letter-spacing: 0.09em; }
   .hero { padding-top: 20px; }
   .eyebrow { letter-spacing: 0.14em; }
 }
