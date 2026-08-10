@@ -35,7 +35,11 @@
 * { box-sizing: border-box; }
 
 html {
-  min-width: 320px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
   background: var(--bg);
   scroll-behavior: smooth;
 }
@@ -46,10 +50,14 @@ body {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   height: 100svh;
+  width: 100%;
   min-height: 100svh;
+  max-width: 100%;
   margin: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  overscroll-behavior-x: none;
+  touch-action: pan-y;
   color: var(--white);
   background-color: var(--bg);
   font-family: var(--pixel);
@@ -252,10 +260,13 @@ a { color: inherit; }
   animation: portrait-frames var(--sync-cycle) steps(1, end) infinite;
 }
 
-.footer-portrait {
-  display: grid;
+.footer-name {
+  display: inline-grid;
   place-items: center;
   opacity: 0.9;
+  color: var(--white);
+  text-align: center;
+  text-decoration: none;
 }
 
 .creator-copy {
@@ -474,7 +485,18 @@ a { color: inherit; }
 .site-footer .footer-links {
   display: flex;
   justify-content: center;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  flex-wrap: wrap;
   gap: clamp(18px, 3vw, 32px);
+}
+
+@supports (overflow: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
 }
 
 @keyframes portrait-frames {
@@ -545,11 +567,11 @@ a { color: inherit; }
 }
 
 @keyframes crt-content-jitter {
-  0% { transform: translate(-0.5px, 0); }
-  28% { transform: translate(0.5px, -0.5px); }
-  54% { transform: translate(-0.5px, 0.5px); }
-  76% { transform: translate(0.5px, 0); }
-  100% { transform: translate(0, -0.5px); }
+  0% { transform: translate(-0.2px, 0); }
+  28% { transform: translate(0.2px, -0.2px); }
+  54% { transform: translate(-0.2px, 0.2px); }
+  76% { transform: translate(0.2px, 0); }
+  100% { transform: translate(0, -0.2px); }
 }
 
 @keyframes crt-tracking {
