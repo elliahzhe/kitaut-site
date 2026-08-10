@@ -73,6 +73,23 @@ body {
   animation: generated-wave-pulse var(--sync-cycle) linear forwards;
 }
 
+.top-background-fade {
+  position: fixed;
+  z-index: 2;
+  top: -1px;
+  right: 0;
+  left: 0;
+  height: clamp(140px, 24svh, 260px);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 12, 16, 1) 0%,
+    rgba(11, 12, 16, 0.82) 32%,
+    rgba(11, 12, 16, 0.36) 68%,
+    rgba(11, 12, 16, 0) 100%
+  );
+}
+
 .pixel-shimmer {
   position: fixed;
   z-index: 25;
@@ -133,7 +150,7 @@ a { color: inherit; }
 
 .portrait-sprite {
   flex: 0 0 auto;
-  width: 68px;
+  width: 84px;
   aspect-ratio: 544 / 736;
   background: url("assets/elliah-portrait-sheet.png") 0 0 / 300% 300% no-repeat;
   image-rendering: pixelated;
@@ -147,7 +164,7 @@ a { color: inherit; }
 
 .creator-copy strong {
   display: block;
-  color: var(--muted);
+  color: #fff;
   font-family: var(--ui);
   font-size: 0.74rem;
   font-weight: 400;
@@ -268,7 +285,7 @@ a { color: inherit; }
   padding: 6px 12px;
   border: 1px solid rgba(245, 243, 232, 0.92);
   border-radius: 8px;
-  opacity: 0.9;
+  opacity: 0.1;
   background: #030405;
   font-family: var(--ui);
   text-align: left;
@@ -280,6 +297,11 @@ a { color: inherit; }
   width: 28px;
   max-height: 34px;
   margin-right: 11px;
+}
+
+.apple-icon {
+  width: 26px;
+  height: 34px;
 }
 
 .play-icon { width: 30px; }
@@ -405,7 +427,7 @@ a { color: inherit; }
     padding-top: 8px;
   }
 
-  .portrait-sprite { width: 52px; }
+  .portrait-sprite { width: 64px; }
   .creator { gap: 7px; }
 
   .hero {
