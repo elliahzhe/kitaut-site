@@ -27,6 +27,7 @@
   --red: #ff3b2f;
   --pixel: "Silkscreen", "Courier New", monospace;
   --ui: var(--pixel);
+  --meta: "SFMono-Regular", "Roboto Mono", "Courier New", monospace;
 }
 
 * { box-sizing: border-box; }
@@ -170,10 +171,12 @@ a { color: inherit; }
 }
 
 .creator-copy strong {
-  font-size: clamp(1.03rem, 2vw, 1.35rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  text-shadow: 2px 2px 0 #000;
+  color: var(--muted);
+  font-family: var(--meta);
+  font-size: 0.74rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: lowercase;
 }
 
 .site-footer a {
@@ -338,7 +341,11 @@ a { color: inherit; }
   font-size: 0.74rem;
 }
 
-.site-footer p { margin: 0; }
+.site-footer p {
+  margin: 0;
+  font-family: var(--meta);
+  letter-spacing: 0;
+}
 
 .site-footer div {
   display: flex;
@@ -420,7 +427,6 @@ a { color: inherit; }
 }
 
 @media (max-width: 390px) {
-  .creator-copy strong { font-size: 0.92rem; }
   .hero { padding-top: 20px; }
 }
 
