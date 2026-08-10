@@ -28,6 +28,7 @@
   --pixel: "Silkscreen", "Courier New", monospace;
   --ui: var(--pixel);
   --meta: "SFMono-Regular", "Roboto Mono", "Courier New", monospace;
+  --sync-cycle: 3.6s;
 }
 
 * { box-sizing: border-box; }
@@ -64,7 +65,7 @@ body {
   transform: translate(-50%, -50%) scale(0.92);
   transform-origin: center;
   will-change: transform, opacity;
-  animation: radial-wave-out 4.8s steps(12, end) infinite;
+  animation: radial-wave-out var(--sync-cycle) steps(9, end) infinite;
 }
 
 .pixel-shimmer {
@@ -164,7 +165,7 @@ a { color: inherit; }
   aspect-ratio: 544 / 736;
   background: url("assets/elliah-portrait-sheet.png") 0 0 / 300% 300% no-repeat;
   image-rendering: pixelated;
-  animation: portrait-frames 1.5s steps(1, end) infinite;
+  animation: portrait-frames var(--sync-cycle) steps(1, end) infinite;
 }
 
 .creator-copy {
@@ -265,7 +266,7 @@ a { color: inherit; }
   image-rendering: pixelated;
   transform: scale(1.75);
   transform-origin: 0 0;
-  animation: logo-frames 2.25s steps(1, end) infinite;
+  animation: logo-frames var(--sync-cycle) steps(1, end) infinite;
 }
 
 .coming-soon {
