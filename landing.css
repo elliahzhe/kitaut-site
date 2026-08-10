@@ -44,21 +44,6 @@ body::after {
 
 a { color: inherit; }
 
-.stars {
-  position: fixed;
-  z-index: 0;
-  inset: 0;
-  opacity: 0.75;
-  pointer-events: none;
-  background-image:
-    radial-gradient(circle, rgba(245, 243, 232, 0.92) 0 1px, transparent 1.6px),
-    radial-gradient(circle, rgba(244, 211, 94, 0.6) 0 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(143, 153, 167, 0.6) 0 1px, transparent 1.4px);
-  background-position: 24px 36px, 7px 13px, 41px 3px;
-  background-size: 79px 91px, 113px 131px, 151px 173px;
-  mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 98%);
-}
-
 .moon-glow {
   position: fixed;
   z-index: 0;
@@ -175,7 +160,7 @@ nav a:focus-visible::after,
   display: grid;
   place-items: center;
   min-height: calc(100svh - 210px);
-  padding: 12px 24px 172px;
+  padding: 12px 24px 106px;
   text-align: center;
 }
 
@@ -356,98 +341,6 @@ nav a:focus-visible::after,
   font-size: 0.68rem;
 }
 
-.rope {
-  position: fixed;
-  z-index: 1;
-  width: 260px;
-  height: 390px;
-  pointer-events: none;
-  opacity: 0.16;
-  border-left: 2px solid #99a2ae;
-  border-radius: 48% 0 0 48%;
-}
-
-.rope i {
-  position: absolute;
-  top: -4px;
-  left: -6px;
-  width: 11px;
-  height: 11px;
-  border: 2px solid var(--white);
-  transform: rotate(45deg);
-}
-
-.rope-one { top: 22%; left: 5%; transform: rotate(-17deg); }
-.rope-two { top: 34%; right: 0; transform: rotate(19deg) scaleX(-1); }
-
-.skyline {
-  position: absolute;
-  z-index: 2;
-  right: 0;
-  bottom: 72px;
-  left: 0;
-  display: flex;
-  align-items: flex-end;
-  height: 170px;
-  overflow: hidden;
-  opacity: 0.74;
-  pointer-events: none;
-}
-
-.skyline::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 36px;
-  background: #10131a;
-}
-
-.skyline span {
-  position: relative;
-  flex: 1 1 auto;
-  min-width: 58px;
-  max-width: 140px;
-  height: 58%;
-  margin: 0 2px;
-  background-color: #151922;
-  background-image: radial-gradient(circle, #050608 0 2px, transparent 2.6px);
-  background-position: 7px 10px;
-  background-size: 15px 18px;
-  border-top: 4px solid #202632;
-  box-shadow: inset 12px 0 rgba(255, 255, 255, 0.018);
-}
-
-.skyline span::before {
-  content: "";
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  width: 3px;
-  height: 10px;
-  background: #313947;
-}
-
-.skyline span:nth-child(1) { height: 43%; }
-.skyline span:nth-child(2) { height: 70%; }
-.skyline span:nth-child(3) { height: 52%; }
-.skyline span:nth-child(4) { height: 84%; }
-.skyline span:nth-child(5) { height: 61%; }
-.skyline span:nth-child(6) { height: 90%; }
-.skyline span:nth-child(7) { height: 48%; }
-.skyline span:nth-child(8) { height: 76%; }
-.skyline span:nth-child(9) { height: 58%; }
-.skyline span:nth-child(10) { height: 88%; }
-.skyline span:nth-child(11) { height: 67%; }
-.skyline span:nth-child(12) { height: 45%; }
-
-.skyline span:nth-child(3n + 2) {
-  background-image:
-    radial-gradient(circle at 52px 28px, var(--yellow) 0 2px, transparent 2.6px),
-    radial-gradient(circle, #050608 0 2px, transparent 2.6px);
-}
-
 .site-footer {
   display: flex;
   align-items: center;
@@ -510,7 +403,7 @@ nav a:focus-visible::after,
 
   .hero {
     min-height: calc(100svh - 154px);
-    padding: 34px 18px 190px;
+    padding: 34px 18px 132px;
   }
 
   .eyebrow { margin-bottom: 26px; font-size: 0.59rem; }
@@ -523,11 +416,6 @@ nav a:focus-visible::after,
   .tagline { margin-bottom: 24px; }
   .store-row { display: grid; grid-template-columns: 1fr; }
   .store-badge { width: 176px; }
-
-  .rope { opacity: 0.1; }
-  .rope-one { left: -90px; }
-  .rope-two { right: -110px; }
-  .skyline { bottom: 124px; height: 145px; }
 
   .site-footer {
     align-items: flex-start;
